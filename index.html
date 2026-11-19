@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="theme-color" content="#182233"><title>Caminhos da Liberdade</title>
+<style>
+:root{--gold:#f2d29a;--cream:#fff0d3;--panel:#202b40;--dark:#151d2c}*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(circle at top,#455365,#172033 65%);color:var(--cream);font-family:Georgia,serif}
+#app{max-width:1000px;margin:auto;padding:14px}.top{display:flex;justify-content:space-between;font:11px system-ui;letter-spacing:2px;color:#ddc9a6}
+.screen{display:none}.screen.active{display:block}.hero{min-height:75vh;display:grid;place-items:center;text-align:center;position:relative;overflow:hidden;border:4px solid #806344;border-radius:8px;background:linear-gradient(#526c78 0 42%,#73815d 43% 60%,#304b3b 61%);box-shadow:0 14px 35px #0008;padding:24px}
+.sun{position:absolute;right:15%;top:12%;width:76px;height:76px;border-radius:50%;background:#f2ce8a;box-shadow:0 0 40px #f2ce8a88}
+.hero:after{content:"";position:absolute;bottom:0;left:0;right:0;height:40%;background:#233c32;clip-path:polygon(0 42%,20% 4%,38% 58%,60% 0,78% 50%,100% 12%,100% 100%,0 100%)}
+.heroContent{z-index:1}.kicker{font:700 12px system-ui;letter-spacing:4px;color:#ffe2a8}
+h1{font-size:clamp(38px,9vw,68px);line-height:.95;text-shadow:4px 4px #633f30,7px 7px #141a26;margin:18px 0}
+.subtitle{font:15px/1.6 system-ui;max-width:520px;margin:0 auto 24px}
+.btn{background:#925b41;color:#fff0d3;border:2px solid #f0d49d;border-radius:5px;padding:12px 18px;min-height:46px;font-weight:bold;box-shadow:0 4px #4b3028;cursor:pointer;margin:4px}
+.btn.alt{background:#344c43;border-color:#a4c09a}.panel{background:#202b40;border:2px solid #806b50;border-radius:8px;padding:18px;box-shadow:0 12px 30px #0005}
+h2{color:#f3d39b;margin:0 0 8px}.muted{font:14px/1.55 system-ui;color:#d8c9ae}
+label{display:block;font:700 12px system-ui;letter-spacing:1px;margin:14px 0 6px;color:#e9cb91}
+input,select{width:100%;padding:12px;background:#111a2a;color:#fff0d3;border:1px solid #a18b68;border-radius:5px;min-height:44px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.preview{display:flex;gap:16px;align-items:center;background:#172235;padding:14px;border-radius:6px;margin:14px 0}
+.avatar{width:60px;height:70px;position:relative;flex:none}.avatar i{position:absolute;display:block}.hair{top:2px;left:10px;width:40px;height:27px;background:#1a100d;border:3px solid #080808}.face{top:20px;left:16px;width:29px;height:28px;background:var(--skin);border:3px solid #1a100d}.body{top:47px;left:9px;width:43px;height:23px;background:var(--shirt);border:3px solid #1a100d}.braid{top:22px;left:5px;width:5px;height:42px;background:#1a100d;box-shadow:45px 0 #1a100d}.avatar.afro .hair{top:0;left:5px;width:50px;height:34px;border-radius:50%}.avatar.afro .braid,.avatar.short .braid{display:none}
+.timeline{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:18px 0}.period{background:#172235;color:#fff0d3;border:1px solid #887251;border-radius:5px;text-align:left;padding:10px;min-height:130px}.period b{display:block;color:#f3cf8e;margin:6px 0;font:700 13px system-ui}.period small{font:11px/1.4 system-ui}
+.story{border-left:4px solid #c58d5d;padding:8px 12px;font:14px/1.6 system-ui;margin:16px 0}
+.game{position:relative;border:3px solid #806344;border-radius:6px;overflow:hidden;background:#52734d}#world{width:100%;height:min(58vh,520px);min-height:320px;display:block;touch-action:none;image-rendering:pixelated}
+.hud{background:#202b40;padding:10px;display:flex;justify-content:space-between;gap:8px;font:12px system-ui}
+.joy{position:absolute;left:14px;bottom:54px;width:116px;height:116px;border-radius:50%;background:#10182799;border:2px solid #f0d49d99;display:grid;place-items:center;touch-action:none}
+.knob{width:46px;height:46px;border-radius:50%;background:linear-gradient(145deg,#f6dfa9,#aa704c);border:3px solid #fff0d3;pointer-events:none}
+.act{position:absolute;right:18px;bottom:68px;width:66px;height:66px;border-radius:50%;background:#925b41;border:3px solid #f0d49d;color:white;font-weight:bold}
+.dialog{display:none;position:absolute;left:10px;right:10px;bottom:10px;background:#151d2cf2;border:2px solid #e6c88e;border-radius:6px;padding:12px;font:14px/1.5 system-ui}
+.dialog b{display:block;color:#f3cf8e;margin-bottom:5px}
+.note{font:12px/1.5 system-ui;color:#cdbd9f;text-align:center;margin:16px}
+@media(max-width:650px){.grid{grid-template-columns:1fr}.timeline{grid-template-columns:1fr 1fr}.period:last-child{grid-column:span 2}.panel{padding:14px}.hero{min-height:72vh}.joy{width:108px;height:108px}}
+</style></head>
+<body><div id="app"><div class="top"><b>MEMÓRIA • IDENTIDADE • RESISTÊNCIA</b><span>PROJETO EDUCATIVO</span></div>
+<section id="home" class="screen active"><div class="hero"><div class="sun"></div><div class="heroContent"><div class="kicker">UMA AVENTURA PELA HISTÓRIA</div><h1>CAMINHOS<br>DA LIBERDADE</h1><p class="subtitle">Uma jornada interativa pela ancestralidade, resistência, cultura e conquistas da população negra no Brasil.</p><button class="btn" id="start">INICIAR JORNADA</button></div></div><p class="note">Conhecer o passado também é construir caminhos para um futuro com respeito e igualdade.</p></section>
+<section id="creator" class="screen"><div class="panel"><h2>Crie sua personagem</h2><p class="muted">Escolha nome, tom de pele, cabelo e roupa. A personalização valoriza a diversidade e a identidade negra.</p><div class="preview"><div class="avatar" id="avatar"><i class="hair"></i><i class="face"></i><i class="body"></i><i class="braid"></i></div><b id="preview">Nova personagem</b></div><div class="grid"><div><label for="name">Nome ou apelido</label><input id="name" maxlength="18" placeholder="Seu nome"></div><div><label for="skin">Tom de pele</label><select id="skin"><option value="#48271e">Ébano</option><option value="#75452f" selected>Marrom-escuro</option><option value="#9b6245">Marrom</option><option value="#c58b68">Marrom-claro</option></select></div><div><label for="hair">Cabelo</label><select id="hair"><option value="braids">Tranças</option><option value="afro">Black power</option><option value="short">Crespo curto</option></select></div><div><label for="shirt">Roupa</label><select id="shirt"><option value="#bd754b">Terracota</option><option value="#557d62">Verde</option><option value="#42658b">Azul</option><option value="#9a668c">Roxo</option></select></div></div><button class="btn" id="continue">CONTINUAR</button><button class="btn alt" data-back="home">VOLTAR</button></div></section>
+<section id="timeline" class="screen"><div class="panel"><h2>Linha do tempo</h2><p class="muted">A história é feita de muitos povos, experiências e formas de resistência. Selecione um período para conhecer seu contexto.</p><div class="timeline"><button class="period" data-p="0">01<b>África e ancestralidade</b><small>Povos, reinos, conhecimentos e culturas.</small></button><button class="period" data-p="1">02<b>Brasil colonial</b><small>Tráfico transatlântico e escravização.</small></button><button class="period" data-p="2">03<b>Quilombos e resistência</b><small>Comunidades e luta por liberdade.</small></button><button class="period" data-p="3">04<b>Abolição e pós-abolição</b><small>1888 e desigualdades que permaneceram.</small></button><button class="period" data-p="4">05<b>Sociedade atual</b><small>Cultura, direitos e enfrentamento ao racismo.</small></button></div><div class="story" id="story">Selecione um período para ler seu contexto histórico.</div><button class="btn" id="play">EXPLORAR A PRIMEIRA FASE</button><button class="btn alt" data-back="creator">VOLTAR</button></div></section>
+<section id="gameScreen" class="screen"><div class="game"><div class="hud"><b>FASE 1 • ÁFRICA E ANCESTRALIDADE</b><span id="hudName">PERSONAGEM</span></div><canvas id="world" width="640" height="420"></canvas><div class="joy" id="joy"><div class="knob" id="knob"></div></div><button class="act" id="action">AÇÃO</button><div class="dialog" id="dialog"><b id="dtitle"></b><span id="dtext"></span><div style="text-align:right"><button class="btn alt" id="close">FECHAR</button></div></div><div class="hud"><span>Joystick ou WASD / setas</span><span>Explore e converse</span></div></div><button class="btn alt" data-back="timeline">VOLTAR À LINHA DO TEMPO</button></section>
+</div>
+<script>
+const $=id=>document.getElementById(id);function show(id){document.querySelectorAll('.screen').forEach(x=>x.classList.remove('active'));$(id).classList.add('active')}
+$('start').onclick=()=>show('creator');document.querySelectorAll('[data-back]').forEach(x=>x.onclick=()=>show(x.dataset.back));
+function avatar(){let a=$('avatar');a.className='avatar '+$('hair').value;a.style.setProperty('--skin',$('skin').value);a.style.setProperty('--shirt',$('shirt').value);$('preview').textContent=$('name').value.trim()||'Nova personagem'}
+['name','skin','hair','shirt'].forEach(id=>$(id).addEventListener('input',avatar));avatar();
+$('continue').onclick=()=>{if(!$('name').value.trim()){alert('Digite seu nome ou apelido.');$('name').focus();return}$('hudName').textContent=$('name').value.toUpperCase();show('timeline')};
+const periods=[
+['África e ancestralidade','O continente africano reúne muitos povos, línguas, reinos e formas de organização. Muito antes da expansão do tráfico atlântico, sociedades africanas desenvolveram conhecimentos em agricultura, metalurgia, arquitetura, comércio, arte e ciência. Não existe uma única cultura africana: há enorme diversidade de histórias e tradições.'],
+['Brasil colonial','A partir do século XVI, milhões de africanos foram sequestrados e transportados à força pelo tráfico transatlântico. No território que viria a ser o Brasil, pessoas escravizadas enfrentaram violência e exploração, mas também preservaram conhecimentos, vínculos, práticas culturais e formas de resistência.'],
+['Quilombos e resistência','Quilombos foram comunidades formadas por pessoas que resistiam à escravização e buscavam construir espaços de autonomia. Existiram em diferentes regiões e épocas. Palmares tornou-se um dos exemplos mais conhecidos; Dandara e Zumbi são lembrados na memória da resistência, dentro de uma história coletiva muito maior.'],
+['Abolição e pós-abolição','A Lei Áurea foi assinada em 13 de maio de 1888 e extinguiu legalmente a escravidão no Brasil. Porém, não foi acompanhada de políticas suficientes de reparação, acesso à terra, educação, moradia e trabalho digno. O racismo e as desigualdades continuaram após a abolição.'],
+['Sociedade atual','A população negra participa de todas as áreas da sociedade e tem papel fundamental na cultura, ciência, educação, política, economia e nas artes. Movimentos negros seguem atuando pela igualdade racial, valorização das identidades e enfrentamento ao racismo.']];
+document.querySelectorAll('[data-p]').forEach(b=>b.onclick=()=>{let p=periods[+b.dataset.p];$('story').innerHTML='<b>'+p[0]+'</b><br>'+p[1]});
+$('play').onclick=()=>{show('gameScreen');draw();requestAnimationFrame(loop)};
+const c=$('world'),g=c.getContext('2d'),p={x:320,y:330,speed:150};let joy={x:0,y:0,active:false,id:null},keys={};
+function box(x,y,w,h,col){g.fillStyle=col;g.fillRect(x,y,w,h)}
+function wall(x,y,w,h){box(x*32,y*30,w*32,h*30,'#584536');box(x*32+3,y*30+3,w*32-6,h*30-6,'#795b3d')}
+function draw(){g.clearRect(0,0,640,420);box(0,0,640,420,'#59774e');for(let y=0;y<14;y++)for(let x=0;x<20;x++)if((x*7+y*11)%13===0)box(x*32+10,y*30+12,4,3,'#82975b');
+[[0,0,20,1],[0,0,1,14],[19,0,1,14],[0,13,20,1],[3,3,4,2],[12,3,4,2],[3,9,3,2],[14,9,3,2],[8,2,1,2],[8,10,1,2],[10,6,2,1],[5,6,2,1]].forEach(a=>wall(...a));
+for(let i=0;i<8;i++){let x=42+i*78,y=55+(i%3)*22;box(x,y,13,20,'#65452f');box(x-8,y-13,29,18,'#2f6545');box(x-4,y-19,20,10,'#497d50')}
+box(430,95,72,44,'#8b6845');box(438,102,56,36,'#b28a58');box(455,119,20,20,'#49352a');person(480,185,'#8e573b');person(p.x,p.y,$('skin').value,true);g.fillStyle='#fff0d3';g.font='12px system-ui';g.fillText('Aldeia • caminho da memória',16,22)}
+function person(x,y,skin,main=false){box(x-9,y-15,18,12,main?'#20140f':'#29201a');if(main&&$('hair').value==='afro')box(x-12,y-18,24,9,'#20140f');box(x-7,y-5,14,13,skin);box(x-10,y+8,20,13,main?$('shirt').value:'#c18a4c');box(x-7,y+19,5,6,'#34271f');box(x+2,y+19,5,6,'#34271f');if(main&&$('hair').value==='braids'){box(x-12,y-2,4,19,'#20140f');box(x+8,y-2,4,19,'#20140f')}}
+function blocked(x,y){let tx=Math.floor(x/32),ty=Math.floor(y/30);return [[0,0,20,1],[0,0,1,14],[19,0,1,14],[0,13,20,1],[3,3,4,2],[12,3,4,2],[3,9,3,2],[14,9,3,2],[8,2,1,2],[8,10,1,2],[10,6,2,1],[5,6,2,1]].some(([a,b,w,h])=>tx>=a&&tx<a+w&&ty>=b&&ty<b+h)}
+function move(dx,dy,dt){let n=Math.hypot(dx,dy);if(n<.08)return;dx/=Math.max(1,n);dy/=Math.max(1,n);let step=p.speed*dt,nx=p.x+dx*step,ny=p.y+dy*step;if(!blocked(nx,p.y))p.x=nx;if(!blocked(p.x,ny))p.y=ny;p.x=Math.max(18,Math.min(622,p.x));p.y=Math.max(18,Math.min(402,p.y))}
+let last=0,run=false;function loop(t){if(!$('gameScreen').classList.contains('active'))return;let dt=last?Math.min((t-last)/1000,.033):0;last=t;let dx=(keys.ArrowRight||keys.d?1:0)-(keys.ArrowLeft||keys.a?1:0)+joy.x,dy=(keys.ArrowDown||keys.s?1:0)-(keys.ArrowUp||keys.w?1:0)+joy.y;move(dx,dy,dt);draw();requestAnimationFrame(loop)}
+function setJoy(e){let r=$('joy').getBoundingClientRect(),dx=e.clientX-(r.left+r.width/2),dy=e.clientY-(r.top+r.height/2),m=r.width*.34,n=Math.hypot(dx,dy);if(n>m){dx=dx/n*m;dy=dy/n*m}joy.x=dx/m;joy.y=dy/m;$('knob').style.transform='translate('+dx+'px,'+dy+'px)'}
+$('joy').addEventListener('pointerdown',e=>{e.preventDefault();joy.active=true;joy.id=e.pointerId;$('joy').setPointerCapture(e.pointerId);setJoy(e)});
+$('joy').addEventListener('pointermove',e=>{if(joy.active&&e.pointerId===joy.id)setJoy(e)});
+function endJoy(e){if(e.pointerId!==joy.id)return;joy.active=false;joy.id=null;joy.x=joy.y=0;$('knob').style.transform='translate(0,0)'}
+$('joy').addEventListener('pointerup',endJoy);$('joy').addEventListener('pointercancel',endJoy);$('joy').addEventListener('lostpointercapture',()=>{joy.active=false;joy.x=joy.y=0;$('knob').style.transform='translate(0,0)'});
+window.addEventListener('keydown',e=>{keys[e.key]=true;if(e.key.startsWith('Arrow'))e.preventDefault()});window.addEventListener('keyup',e=>keys[e.key]=false);window.addEventListener('blur',()=>{keys={};joy.x=joy.y=0});
+function dialogue(title,text){$('dtitle').textContent=title;$('dtext').textContent=text;$('dialog').style.display='block'}
+$('action').onclick=()=>{if(Math.hypot(p.x-480,p.y-185)<78)dialogue('Amina • Guardiã das memórias','Bem-vinda à nossa comunidade. A África é um continente imenso e diverso, com muitos povos, línguas, reinos e conhecimentos. Nossa história começa muito antes da escravização. Explore e descubra essa diversidade.');else dialogue('Caminhos da memória','Aproxime-se de Amina, perto da construção de pedra, e toque em AÇÃO para conversar. Use o joystick para caminhar.')};
+$('close').onclick=()=>$('dialog').style.display='none';draw();
+</script></body></html>
